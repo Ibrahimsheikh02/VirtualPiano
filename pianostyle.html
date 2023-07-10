@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div class = "header">
+        <h1> Virtual Piano </h1>
+
+        <p>On your keyboard, the keys correspond to (in order left to right):</p>
+        <p>a, s, d, f, g, space, h, j, k, l, ;, '   </p>
+
+    </div>
+    <style>
+        .header {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+
+    
+
+
+    <style>
+        .key {
+            width: 60px;
+            height: 200px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 200px;
+            margin: 5px;
+            font-size: 24px;
+            display: inline-block;
+        }
+
+        .key.black {
+            background-color: black;
+            color: white;
+        }
+
+        .key.white {
+            background-color: white;
+            color: black;
+        }
+
+        .key.active {
+            background-color: yellow;
+        }
+
+        .outer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .container {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="container">
+            <div class="key white" data-key="a">C</div>
+            <div class="key black" data-key="s">C#</div>
+            <div class="key white" data-key="d">D</div>
+            <div class="key black" data-key="f">D#</div>
+            <div class="key white" data-key="g">E</div>
+            <div class="key white" data-key=" ">F</div>
+            <div class="key black" data-key="h">F#</div>
+            <div class="key white" data-key="j">G</div>
+            <div class="key black" data-key="k">G#</div>
+            <div class="key white" data-key="l">A</div>
+            <div class="key black" data-key=";">A#</div>
+            <div class="key white" data-key="'">B</div>
+        </div>
+    </div>
+
+    <script>
+        const keys = document.querySelectorAll('.key');
+
+        function handleKeyPress(event) {
+            keys.forEach(key => {
+                const keyAttribute = key.getAttribute('data-key');
+                if (keyAttribute === event.key) {
+                    key.classList.add('active');
+                } else {
+                    key.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('keypress', handleKeyPress);
+    </script>
+</body>
+
+</html>
